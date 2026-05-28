@@ -65,7 +65,7 @@ function TiupLilin() {
                         ) : (
                             <div className={styles.messageBox}>
                                 <h1>Happy 22nd birthday!</h1>
-                                <p>Semoga tahun ini amu lebih bahagia, dan selalu menemukan alasan untuk tersenyum. Aku di sini, kita sama-sama terus ya yangg 😊😊😊</p>
+                                <p>Semoga tahun ini kamu lebih bahagia, dan selalu menemukan alasan untuk tersenyum. Aku di sini, kita sama-sama terus ya yangg 😊😊😊</p>
                             </div>
                         )}
                     </div>
