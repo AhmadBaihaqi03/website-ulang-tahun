@@ -1,0 +1,68 @@
+.galleryTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: #4a2831;
+  text-align: center;
+  margin-bottom: 30px;
+  z-index: 10;
+}
+
+.polaroidGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 40px; /* Ditambah sedikit agar tidak terlalu rapat ke pinggir layar */
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.polaroid {
+  background: #fff;
+  padding: 10px 10px 25px 10px; /* Sesuaikan padding bawah agar teks punya ruang */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  width: 140px;
+  margin: -10px;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  cursor: pointer;
+}
+
+/* Variasi rotasi tetap sama */
+.polaroid:nth-child(1) { transform: rotate(-10deg); }
+.polaroid:nth-child(2) { transform: rotate(8deg); }
+.polaroid:nth-child(3) { transform: rotate(-5deg); }
+.polaroid:nth-child(4) { transform: rotate(12deg); }
+.polaroid:nth-child(5) { transform: rotate(-8deg); }
+.polaroid:nth-child(6) { transform: rotate(5deg); }
+.polaroid:nth-child(7) { transform: rotate(-12deg); }
+.polaroid:nth-child(8) { transform: rotate(9deg); }
+.polaroid:nth-child(9) { transform: rotate(-3deg); }
+
+.polaroid:hover {
+  transform: rotate(0deg) scale(1.25) !important;
+  z-index: 100 !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.polaroid img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+/* --- PERBAIKAN PADA TEKS --- */
+.polaroid p {
+  font-family: 'Sacramento', cursive;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 1rem; /* Sedikit diperkecil agar lebih luwes */
+  color: #613642;
+  
+  /* Logika agar teks tidak menembus kotak */
+  word-wrap: break-word;     
+  overflow-wrap: break-word;
+  white-space: normal;       /* Dulu 'nowrap', sekarang 'normal' agar bisa turun baris */
+  line-height: 1.1;          /* Jarak antar baris yang rapat */
+  padding: 0 5px;            /* Memberi jarak ke pinggir kotak */
+}

@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+
+  /* Background global milikmu */
+  background-image: url('./assets/background.webp');
+  background-color: #fff5f7; /* Warna cadangan bertema pink manis */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+}
+
+/* ==========================================================================
+   --- ANIMASI KELOPAK BUNGA GLOBAL ---
+   ========================================================================== */
+
+/* Wrapper utama aplikasi untuk mengunci layar */
+.app-wrapper {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* Wadah kelopak bunga tingkat global */
+.global-petal-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Supaya tidak menghalangi ketukan jari pada tombol/surat */
+  z-index: 1; /* Berada di atas background, tapi di bawah teks/amplop */
+}
+
+/* Karakteristik kelopak bunga global */
+.global-falling-petal {
+  position: absolute;
+  top: -40px; /* Sembunyikan sedikit di atas layar sebelum jatuh */
+  opacity: 0;
+  image-rendering: -webkit-optimize-contrast;
+  will-change: transform, opacity;
+  animation: globalFallAndSway linear infinite;
+}
+
+/* Jalur animasi liukan bunga jatuh (60 FPS Mulus) */
+@keyframes globalFallAndSway {
+  0% {
+    top: -5%;
+    opacity: 0;
+    transform: translateX(0px) rotate(var(--start-rot, 0deg));
+  }
+  10% { 
+    opacity: 0.8; 
+  }
+  90% { 
+    opacity: 0.8; 
+  }
+  100% {
+    top: 105%;
+    opacity: 0;
+    transform: translateX(40px) rotate(calc(var(--start-rot, 0deg) + 540deg));
+  }
+}

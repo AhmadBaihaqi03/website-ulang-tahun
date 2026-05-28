@@ -1,0 +1,172 @@
+/* --- CONTAINER UTAMA --- */
+.container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent; 
+  transition: background 1.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.darken {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+/* --- AREA CAHAYA & TOMBOL --- */
+.introArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Kalimat pengantar estetik */
+.subtext {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: #4a2831;
+  text-align: center;
+  margin-bottom: 30px;
+  margin-left: 20px;
+  margin-right: 20px; 
+  z-index: 10;
+}
+
+.buttonWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(
+    circle, 
+    rgba(255, 223, 145, 0.3) 0%, 
+    rgba(255, 180, 100, 0.1) 60%, 
+    transparent 70%
+  );
+  padding: 80px; 
+  border-radius: 50%;
+  animation: flicker 3s infinite ease-in-out;
+}
+
+.envelopeButton {
+  padding: 15px 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid #fff;
+  color:  #4a2831;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  backdrop-filter: blur(5px);
+  z-index: 1;
+}
+
+.envelopeButton:hover { 
+  background: rgba(255, 255, 255, 0.2); 
+}
+
+/* --- ANIMASI CAHAYA --- */
+@keyframes flicker {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* --- AREA CAKE & PESAN --- */
+.cakeArea {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.glowNumber {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.05);
+  z-index: 0;
+  transition: all 2s ease;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0;
+}
+
+.glowNumber.visible {
+  opacity: 1;
+  color: rgba(255, 255, 255, 0.15);
+  text-shadow: 0 0 50px rgba(255, 200, 0, 0.4);
+}
+
+.candle {
+  position: relative;
+  z-index: 1;
+  font-size: 6rem;
+  filter: drop-shadow(0 0 20px rgba(255, 165, 0, 0.6));
+  transition: all 1s ease;
+  margin-bottom: 20px;
+}
+
+.flicker { animation: candleFlicker 1.5s infinite alternate; }
+
+.out {
+  opacity: 0.2;
+  filter: grayscale(1) blur(5px);
+  transform: scale(0.9);
+}
+
+@keyframes candleFlicker {
+  from { transform: translateY(0) rotate(-2deg); }
+  to { transform: translateY(-10px) rotate(2deg); }
+}
+
+.messageContainer {
+  opacity: 0;
+  transition: opacity 2s ease;
+  text-align: center;
+  padding: 20px;
+  z-index: 2;
+  margin-top: 20px;
+}
+
+.fadeIn { opacity: 1; }
+
+.messageBox h1 { 
+  font-family: 'Playfair Display', serif; 
+  color: #fff; 
+  margin-bottom: 15px; 
+  font-size: 2.5rem;
+}
+
+.messageBox p { 
+  font-family: 'Playfair Display', serif; 
+  font-size: 1.3rem; 
+  color: #fdfbf7; 
+  line-height: 1.6; 
+  max-width: 350px; 
+  margin: 0 auto;
+}
+
+.instruction { 
+  color: #fff; 
+  font-family: serif; 
+  font-style: italic; 
+  font-size: 1.2rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}

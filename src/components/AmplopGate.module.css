@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Sacramento&display=swap');
+
+/* Kontainer utama meluruskan semua teks dan amplop di tengah */
+.screenContainer {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative; /* Wajib ada agar bunga jatuh tidak berantakan keluar batas layar */
+  overflow: hidden;   /* Mengunci agar bunga tidak membuat layar HP bisa di-scroll ke bawah */
+}
+
+/* Pengaturan Teks Atas (Mewah & Elegan) */
+.title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600; /* Sedikit tebal agar tegas */
+  font-style: italic; /* Dibuat miring agar lebih puitis */
+  font-size: 2.4rem;
+  color: #4a2831; /* Warna merah marun gelap agar senada dengan kelopak bunga */
+  text-align: center;
+  margin-bottom: 40px;
+  max-width: 90%;
+  transition: opacity 0.25s ease-out;
+  z-index: 2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Bayangan halus pada teks */
+}
+
+/* Pengaturan Teks Bawah (Gaya Tulisan Tangan Kursif) */
+.subtitle {
+  font-family: 'Sacramento', cursive;
+  font-size: 2.6rem; /* Font jenis kursif biasanya butuh ukuran lebih besar agar terbaca */
+  color: #613642;
+  text-align: center;
+  margin-top: 25px;
+  transition: opacity 0.25s ease-out;
+  z-index: 2;
+}
+
+/* Tombol transparan yang membungkus gambar amplop */
+.envelopeButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 85%;
+  animation: float 3s ease-in-out infinite; 
+  z-index: 2;
+
+  /* OPTIMALISASI: Menyiagakan GPU browser sebelum tombol diklik */
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+/* Gambar amplop */
+.envelopeImage {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.1)); 
+
+  /* OPTIMALISASI: Mencegah gambar nge-blur & memaksa akselerasi hardware */
+  transform: translate3d(0, 0, 0);
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* Efek melayang halus sebelum diklik */
+@keyframes float {
+  0% { transform: translateY(0px) translate3d(0, 0, 0); }
+  50% { transform: translateY(-8px) translate3d(0, 0, 0); }
+  100% { transform: translateY(0px) translate3d(0, 0, 0); }
+}
+
+/* --- ANIMASI PERBAIKAN: LICIN, MULUS & 60 FPS --- */
+.cinematicOut {
+  animation: flyForwardIntoScreen 0.55s forwards ease-out;
+  pointer-events: none; /* Kunci tombol agar tidak bisa di-klik ganda */
+}
+
+@keyframes flyForwardIntoScreen {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.8) translate3d(0, 0, 0); 
+    opacity: 0;
+  }
+}
+
+/* Animasi Fade Out untuk Teks */
+.fadeOutText {
+  animation: fadeOut 0.6s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px); /* Teks sedikit "melayang" ke atas saat hilang */
+  }
+}
+
+/* Tambahan: Pastikan teks punya transisi dasar agar tidak kaku */
+.title, .subtitle {
+  transition: opacity 0.6s ease;
+}
